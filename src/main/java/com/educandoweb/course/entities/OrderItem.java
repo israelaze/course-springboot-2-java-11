@@ -7,20 +7,20 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import com.educandoweb.course.entities.pk.OrderItemPk;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_order_item")
-public class OrderItem implements Serializable{
+public class OrderItem implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private OrderItemPk id;
+	private OrderItemPk id = new OrderItemPk();
 	
 	private Integer quantity;
 	private Double price;
 	
 	public OrderItem() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public OrderItem(Order order, Product product, Integer quantity, Double price) {
@@ -31,6 +31,7 @@ public class OrderItem implements Serializable{
 		this.price = price;
 	}
 
+	@JsonIgnore
 	public Order getOrder() {
 		return id.getOrder();
 	}
@@ -39,8 +40,8 @@ public class OrderItem implements Serializable{
 		id.setOrder(order);
 	}
 	
-	public Order getproduct() {
-		return id.getOrder();
+	public Product getProduct() {
+		return id.getProduct();
 	}
 	
 	public void setProduct(Product product) {
@@ -87,6 +88,4 @@ public class OrderItem implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
 }

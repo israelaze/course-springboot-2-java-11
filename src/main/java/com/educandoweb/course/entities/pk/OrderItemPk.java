@@ -9,13 +9,12 @@ import javax.persistence.ManyToOne;
 import com.educandoweb.course.entities.Order;
 import com.educandoweb.course.entities.Product;
 
-
 @Embeddable
 public class OrderItemPk implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "order_item")
+	@JoinColumn(name = "order_id")
 	private Order order;
 	
 	@ManyToOne
@@ -34,6 +33,7 @@ public class OrderItemPk implements Serializable {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -42,6 +42,7 @@ public class OrderItemPk implements Serializable {
 		result = prime * result + ((product == null) ? 0 : product.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -63,7 +64,4 @@ public class OrderItemPk implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-
 }

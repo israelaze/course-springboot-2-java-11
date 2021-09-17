@@ -19,7 +19,6 @@ public class UserResource {
 	@Autowired
 	private UserService service;
 	
-	
 	@GetMapping
 	public ResponseEntity<List<User>> findAll(){
 		List<User> list = service.findAll();
@@ -29,12 +28,7 @@ public class UserResource {
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<User> findById(@PathVariable Long id){
 		User obj = service.findById(id);
-		return ResponseEntity.ok().body(obj);
-		
+		return ResponseEntity.ok().body(obj);	
 	}
 	
-	
-	
-	
-
 }
